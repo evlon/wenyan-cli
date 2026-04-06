@@ -13,6 +13,7 @@ import {
     ThemeOptions,
 } from "@wenyan-md/core/wrapper";
 import { getInputContent } from "./utils.js";
+import dotenv from "dotenv";
 
 export function createProgram(version: string = pkg.version): Command {
     const program = new Command();
@@ -46,10 +47,17 @@ export function createProgram(version: string = pkg.version): Command {
     addCommonOptions(pubCmd)
         .option("--server <url>", "Server URL to publish through (e.g. https://api.yourdomain.com)")
         .option("--api-key <apiKey>", "API key for the remote server")
+        .option("--env-file <file>", "Path to a .env file to load environment variables from</file>")
         .option("--app-id [id]", "WeChat ID to publish to</id>, if not specified, will use the env variable WECHAT_APP_ID")
         .option("--app-secret [secret]", "WeChat Secret to publish to</secret>, if not specified, will use the env variable WECHAT_APP_SECRET")
         .action(async (inputContent: string | undefined, options: ClientPublishOptions) => {
             await runCommandWrapper(async () => {
+
+                // 1. 读取环境变量
+                if(options.envFile){
+                    dotenv.config({ path: options.envFile });
+                }
+
                 // 如果传入了 --server，则走客户端（远程）模式
                 if (options.server) {
                     if(!options.appId){
