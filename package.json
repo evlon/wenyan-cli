@@ -1,6 +1,6 @@
 {
-  "name": "@wenyan-md/cli",
-  "version": "2.0.2",
+  "name": "wenyan-md-cli-evlon",
+  "version": "1.0.0",
   "description": "A CLI tool for Wenyan markdown rendering & publishing",
   "author": "Lei <caol64@gmail.com> (https://github.com/caol64)",
   "license": "Apache-2.0",
@@ -45,7 +45,7 @@
   },
   "packageManager": "pnpm@10.7.1",
   "dependencies": {
-    "@wenyan-md/core": "^3.0.3",
+    "@wenyan-md/core": "npm:evlon-wenyan-md-core@^3.0.3",
     "commander": "^14.0.0",
     "express": "^5.2.1",
     "form-data-encoder": "^4.1.0",
