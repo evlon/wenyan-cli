@@ -47,6 +47,7 @@ export function createProgram(version: string = pkg.version): Command {
     addCommonOptions(pubCmd)
         .option("--server <url>", "Server URL to publish through (e.g. https://api.yourdomain.com)")
         .option("--api-key <apiKey>", "API key for the remote server")
+        .option("--proxy <url>", "Proxy URL to use for requests</url>, ex:")
         .option("--env-file <file>", "Path to a .env file to load environment variables from</file>")
         .option("--app-id [id]", "WeChat ID to publish to</id>, if not specified, will use the env variable WECHAT_APP_ID")
         .option("--app-secret [secret]", "WeChat Secret to publish to</secret>, if not specified, will use the env variable WECHAT_APP_SECRET")
